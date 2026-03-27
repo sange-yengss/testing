@@ -43,10 +43,12 @@ nav a {
   color: #fbcfe8;
   margin-left: 20px;
   text-decoration: none;
+  transition: 0.3s;
 }
 
 nav a:hover {
   color: #ff6ec4;
+  transform: scale(1.1);
 }
 
 /* HERO SLIDER */
@@ -58,14 +60,14 @@ nav a:hover {
 .slider {
   position: absolute;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
 }
 
 .slides {
   display: flex;
   width: 400%;
-  animation: slide 18s infinite;
+  animation: slide 12s linear infinite;
 }
 
 .slides img {
@@ -74,11 +76,17 @@ nav a:hover {
   object-fit: cover;
 }
 
+/* NON-STOP SMOOTH SLIDE */
+@keyframes slide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-300%); }
+}
+
 /* OVERLAY */
 .overlay {
   position: relative;
   z-index: 1;
-  height: 100vh;
+  height: 100%;
   background: rgba(0,0,0,0.65);
   display: flex;
   flex-direction: column;
@@ -120,30 +128,72 @@ p {
   transform: scale(1.1);
 }
 
-/* SECTIONS */
-section {
-  padding: 100px 20px;
+/* SECTIONS WITH BACKGROUND */
+#services, #pricing, #contact {
+  background-size: cover;
+  background-position: center;
+  position: relative;
 }
 
-/* CARDS */
+#services::before,
+#pricing::before,
+#contact::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  top: 0;
+  left: 0;
+}
+
+section {
+  padding: 100px 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* BACKGROUND IMAGES */
+#services {
+  background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085');
+}
+
+#pricing {
+  background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c');
+}
+
+#contact {
+  background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475');
+}
+
+/* FLEX */
 .flex {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
+/* GLASS CARDS */
 .card {
   background: rgba(255,255,255,0.08);
   margin: 15px;
   padding: 25px;
   width: 260px;
   border-radius: 20px;
-  backdrop-filter: blur(10px);
-  transition: 0.3s;
+  backdrop-filter: blur(15px);
+  transition: 0.4s;
+  cursor: pointer;
 }
 
+/* POP EFFECT */
 .card:hover {
-  transform: scale(1.05);
+  transform: scale(1.08) translateY(-10px);
+  box-shadow: 0 10px 30px rgba(255,105,180,0.6);
+}
+
+/* CLICK POP */
+.card:active {
+  transform: scale(0.95);
 }
 
 /* PRICING */
@@ -151,18 +201,6 @@ section {
   color: #ff6ec4;
   font-size: 24px;
   margin: 10px 0;
-}
-
-/* ANIMATION */
-@keyframes slide {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(0); }
-  30% { transform: translateX(-100%); }
-  50% { transform: translateX(-100%); }
-  55% { transform: translateX(-200%); }
-  75% { transform: translateX(-200%); }
-  80% { transform: translateX(-300%); }
-  100% { transform: translateX(-300%); }
 }
 
 </style>
@@ -176,7 +214,6 @@ section {
 <a href="#home">Home</a>
 <a href="#services">Services</a>
 <a href="#pricing">Pricing</a>
-<a href="#info">Info</a>
 <a href="#contact">Contact</a>
 </div>
 </nav>
@@ -234,55 +271,18 @@ section {
 <h3>Basic</h3>
 <div class="price">R300 – R500</div>
 <p>✔ Simple Website</p>
-<p>✔ Contact Info</p>
 </div>
 
 <div class="card">
 <h3>Standard</h3>
 <div class="price">R600 – R800</div>
 <p>✔ Better Design</p>
-<p>✔ Images & Layout</p>
 </div>
 
 <div class="card">
 <h3>Premium</h3>
 <div class="price">R1000 – R1300</div>
 <p>✔ Full Website</p>
-<p>✔ Luxury Design</p>
-</div>
-
-</div>
-
-<p style="margin-top:20px;">
-Note: Domain & hosting can be added later for a more professional setup.
-</p>
-
-</section>
-
-<!-- INFO -->
-<section id="info">
-<h2>🌐 How It Works</h2>
-
-<div class="flex">
-
-<div class="card">
-<h3>Instant Website</h3>
-<p>Your site works immediately</p>
-</div>
-
-<div class="card">
-<h3>Free Start</h3>
-<p>No extra cost at the beginning</p>
-</div>
-
-<div class="card">
-<h3>Upgrade Later</h3>
-<p>Add domain anytime</p>
-</div>
-
-<div class="card">
-<h3>Google Growth</h3>
-<p>Appears on Google over time</p>
 </div>
 
 </div>
@@ -294,13 +294,11 @@ Note: Domain & hosting can be added later for a more professional setup.
 <h2>📲 Contact Me</h2>
 <p>Let’s build your website today 🚀</p>
 
-<a class="btn" href="https://wa.me/27812624641">Chat on WhatsApp</a>
-
+<a class="btn" href="https://wa.me/27812624641">WhatsApp</a>
 <br><br>
+<a class="btn" href="mailto:sangeyengeni36@gmail.com">Email</a>
 
-<a class="btn" href="mailto:sangeyengeni36@gmail.com">Send Email</a>
-
-<p style="margin-top:10px;">
+<p>
 📞 081 262 4641 <br>
 📧 sangeyengeni36@gmail.com
 </p>
