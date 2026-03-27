@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>YengeniTech Solutions</title>
+<title>HopeTech Solutions</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
@@ -17,30 +17,8 @@
 }
 
 body {
-  color: #f3e8ff; /* soft light purple */
+  color: #f3e8ff;
   scroll-behavior: smooth;
-}
-
-/* BACKGROUND IMAGE */
-body::before {
-  content: "";
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: url('https://images.unsplash.com/photo-1518770660439-4636190af475') no-repeat center/cover;
-  z-index: -2;
-}
-  p { 
-    color: #e9d5ff;
-  }
-
-body::after {
-  content: "";
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.75);
-  z-index: -1;
 }
 
 /* NAVBAR */
@@ -49,61 +27,92 @@ nav {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 20px 50px;
-  background: rgba(0,0,0,0.6);
+  padding: 20px 40px;
+  background: rgba(0,0,0,0.7);
   backdrop-filter: blur(10px);
+  z-index: 1000;
 }
 
 .logo {
   font-size: 22px;
-  font-weight: bold;
   color: #ff6ec4;
+  font-weight: bold;
 }
 
 nav a {
-  color: #fbcfe8; /* soft pink*/
-  margin-left: 25px;
+  color: #fbcfe8;
+  margin-left: 20px;
   text-decoration: none;
-  font-size: 14px;
-  transition: 0.3s;
 }
-h2, h3 { 
-  color: #f5d0fe;
-}
+
 nav a:hover {
   color: #ff6ec4;
 }
 
-/* HERO */
+/* HERO SLIDER */
 #home {
+  position: relative;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
 }
 
-#home h1 {
-  font-size: 55px;
+.slider {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.slides {
+  display: flex;
+  width: 400%;
+  animation: slide 18s infinite;
+}
+
+.slides img {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+
+/* OVERLAY */
+.overlay {
+  position: relative;
+  z-index: 1;
+  height: 100vh;
+  background: rgba(0,0,0,0.65);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* TEXT */
+h1 {
+  font-size: 50px;
   background: linear-gradient(45deg, #ff6ec4, #7873f5);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  text-align: center;
 }
 
-#home p {
-  margin-top: 15px;
-  font-size: 18px;
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
 }
 
+p {
+  color: #e9d5ff;
+  text-align: center;
+}
+
+/* BUTTON */
 .btn {
-  display: inline-block;
-  margin-top: 25px;
-  padding: 15px 35px;
+  margin-top: 20px;
+  padding: 14px 30px;
   border-radius: 30px;
   background: linear-gradient(45deg, #ff6ec4, #7873f5);
-  text-decoration: none;
   color: white;
-  font-weight: bold;
+  text-decoration: none;
   transition: 0.3s;
 }
 
@@ -111,72 +120,49 @@ nav a:hover {
   transform: scale(1.1);
 }
 
-/* SECTION */
+/* SECTIONS */
 section {
-  padding: 100px 40px;
-  text-align: center;
+  padding: 100px 20px;
 }
 
-/* GLASS CARDS */
+/* CARDS */
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .card {
   background: rgba(255,255,255,0.08);
+  margin: 15px;
+  padding: 25px;
+  width: 260px;
   border-radius: 20px;
-  padding: 30px;
-  margin: 20px;
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(10px);
   transition: 0.3s;
 }
 
 .card:hover {
-  transform: translateY(-10px) scale(1.03);
-}
-
-/* FLEX */
-.flex {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-/* HEADINGS */
-h2 {
-  margin-bottom: 40px;
-  font-size: 30px;
+  transform: scale(1.05);
 }
 
 /* PRICING */
 .price {
-  font-size: 28px;
-  margin: 15px 0;
   color: #ff6ec4;
-}
-
-ul {
-  list-style: none;
-  margin-top: 15px;
-}
-
-ul li {
-  margin: 8px 0;
-}
-
-/* FOOTER CONTACT */
-#contact {
-  background: rgba(0,0,0,0.7);
+  font-size: 24px;
+  margin: 10px 0;
 }
 
 /* ANIMATION */
-.fade {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeIn 1s forwards;
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes slide {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(0); }
+  30% { transform: translateX(-100%); }
+  50% { transform: translateX(-100%); }
+  55% { transform: translateX(-200%); }
+  75% { transform: translateX(-200%); }
+  80% { transform: translateX(-300%); }
+  100% { transform: translateX(-300%); }
 }
 
 </style>
@@ -185,85 +171,122 @@ ul li {
 <body>
 
 <nav>
-<div class="logo">💻 YengeniTech</div>
+<div class="logo">💻 Hope Tech</div>
 <div>
 <a href="#home">Home</a>
 <a href="#services">Services</a>
 <a href="#pricing">Pricing</a>
+<a href="#info">Info</a>
 <a href="#contact">Contact</a>
 </div>
 </nav>
 
-<!-- HERO -->
+<!-- HOME -->
 <section id="home">
-<div>
-<h1>Build a Website That Sells For You 💻✨</h1>
-<p>I create modern, beautiful and professional websites for your business</p>
+
+<div class="slider">
+<div class="slides">
+<img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
+<img src="https://images.unsplash.com/photo-1518770660439-4636190af475">
+<img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c">
+<img src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif">
+</div>
+</div>
+
+<div class="overlay">
+<h1>Luxury Websites That Grow Your Business 💻✨</h1>
+<p>Modern • Attractive • Professional</p>
 <a href="#pricing" class="btn">View Pricing</a>
 </div>
+
 </section>
 
 <!-- SERVICES -->
-<section id="services" class="fade">
+<section id="services">
 <h2>💼 Services</h2>
 
 <div class="flex">
-
 <div class="card">
 <h3>Business Websites</h3>
-<p>Clean & professional websites that attract customers</p>
+<p>Professional websites for your business</p>
 </div>
 
 <div class="card">
 <h3>Mobile Friendly</h3>
-<p>Your website looks perfect on phones & tablets</p>
+<p>Perfect on phones & tablets</p>
 </div>
 
 <div class="card">
 <h3>WhatsApp Integration</h3>
 <p>Customers contact you instantly</p>
 </div>
-
 </div>
+
 </section>
 
 <!-- PRICING -->
-<section id="pricing" class="fade">
-<h2>💰 Pricing Plans</h2>
+<section id="pricing">
+<h2>💰 Pricing</h2>
 
 <div class="flex">
 
 <div class="card">
 <h3>Basic</h3>
-<div class="price">R300-R500</div>
-<ul>
-<li>✔ 1 Page Website</li>
-<li>✔ Contact Info</li>
-<li>✔ WhatsApp Button</li>
-</ul>
+<div class="price">R300 – R500</div>
+<p>✔ Simple Website</p>
+<p>✔ Contact Info</p>
 </div>
 
 <div class="card">
 <h3>Standard</h3>
-<div class="price">R600-R800</div>
-<ul>
-<li>✔ 3 Sections</li>
-<li>✔ Images Included</li>
-<li>✔ Better Design</li>
-</ul>
+<div class="price">R600 – R800</div>
+<p>✔ Better Design</p>
+<p>✔ Images & Layout</p>
 </div>
 
 <div class="card">
 <h3>Premium</h3>
-<div class="price">R1000-R1300</div>
-<ul>
-<li>✔ Full Website</li>
-<li>✔ Modern Design</li>
-<li>✔ Multiple Pages</li>
-</ul>
+<div class="price">R1000 – R1300</div>
+<p>✔ Full Website</p>
+<p>✔ Luxury Design</p>
 </div>
 
 </div>
+
+<p style="margin-top:20px;">
+Note: Domain & hosting can be added later for a more professional setup.
+</p>
+
+</section>
+
+<!-- INFO -->
+<section id="info">
+<h2>🌐 How It Works</h2>
+
+<div class="flex">
+
+<div class="card">
+<h3>Instant Website</h3>
+<p>Your site works immediately</p>
+</div>
+
+<div class="card">
+<h3>Free Start</h3>
+<p>No extra cost at the beginning</p>
+</div>
+
+<div class="card">
+<h3>Upgrade Later</h3>
+<p>Add domain anytime</p>
+</div>
+
+<div class="card">
+<h3>Google Growth</h3>
+<p>Appears on Google over time</p>
+</div>
+
+</div>
+
 </section>
 
 <!-- CONTACT -->
@@ -272,6 +295,16 @@ ul li {
 <p>Let’s build your website today 🚀</p>
 
 <a class="btn" href="https://wa.me/27812624641">Chat on WhatsApp</a>
+
+<br><br>
+
+<a class="btn" href="mailto:sangeyengeni36@gmail.com">Send Email</a>
+
+<p style="margin-top:10px;">
+📞 081 262 4641 <br>
+📧 sangeyengeni36@gmail.com
+</p>
+
 </section>
 
 </body>
